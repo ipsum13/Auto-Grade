@@ -304,7 +304,6 @@ router.get("/get-quiz-marks", async (req, res) => {
     res.json(quizes);
   } catch (err) {
     console.error(err.message);
-
     res.status(500).send('Server Error');
   }
 })
@@ -483,7 +482,12 @@ router.put("/update-quiz", async (req, res) => {
 
   const student = await Student.findOne({ id: id, course: req.body.course });
   if (student) {
-    student.updateOne({ $set: { [`quizes.${index}.marksObtained`]: req.body.marks } }).exec();
+    try {
+      student.updateOne({ $set: { [`quizes.${index}.marksObtained`]: req.body.marks } }).exec();
+    } catch(e) {
+      console.log(e);
+    }
+    
   }
 
 })

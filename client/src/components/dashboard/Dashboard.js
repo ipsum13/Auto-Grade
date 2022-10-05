@@ -71,6 +71,7 @@ const handleModal = () => {
     if (courses.length > 0) {
       return (
         <div style={{ display: 'table', margin: '0 auto', paddingTop: '5vw' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'auto auto', gridGap: "3vw" }}>
           {courses.map((item, idx) =>
             <Card key={item.course} style={{ width: '18rem' }}>
               <Card.Img variant="top" src={imageArr[i++]} style={{height: '22vh'}}/>
@@ -99,6 +100,7 @@ const handleModal = () => {
               </Card.Body>
             </Card>
           )}
+        </div>
         </div>
       )
     }
